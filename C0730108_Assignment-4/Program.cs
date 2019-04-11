@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace C0730108_Assignment_4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.Run();
 
         }
         public void Run() { this.ReadTextFiles(); }
@@ -23,7 +25,7 @@ namespace C0730108_Assignment_4
         public void ReadTextFiles()
         {
             //Read file using StreamReader.Reads file line by line 
-            using (StreamReader file = new StreamReader("U:Users/730108/ASSIGNMENT/Beowulf.txt"))
+            using (StreamReader file = new StreamReader("U:/Users/730108/Beowulf.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -31,6 +33,7 @@ namespace C0730108_Assignment_4
                 {
                     Console.WriteLine(ln);
                     Beowulf.Add(ln);
+                    counter++;
                 }
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
@@ -44,7 +47,8 @@ namespace C0730108_Assignment_4
 
             foreach (char c in line)
             {
-                if (char.IsLetter(c)) { countletters++; }
+                if (char.IsLetter(c))
+                { countletters++; }
                 if (char.IsWhiteSpace(c)) { countSpaces++; }
             }
             return countSpaces;
@@ -53,3 +57,4 @@ namespace C0730108_Assignment_4
 
     }
 }
+
