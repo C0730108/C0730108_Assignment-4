@@ -12,89 +12,91 @@ namespace C0730108_Assignment_4
     
     class Program
     {
-        ArrayList Beowulf;
+        
+        
+            ArrayList Beowulf;
 
-        static void Main(string[] args)
-        {
-            Program p = new Program();
-            p.Beowulf = new ArrayList();
-            p.Run();
-            p.ProcessArrayList();
-
-        }
-
-        public void Run()
-        {
-            this.ReadTextFiles();
-
-
-        }
-
-
-        public void ReadTextFiles()
-        {
-            //Read file using StreamReader. Reads file line by line
-            using (StreamReader file = new StreamReader("U:/Users/730108/Beowulf.txt"))
+            static void Main(string[] args)
             {
-                int counter = 0;
-                string ln;
+                Program p = new Program();
+                p.Beowulf = new ArrayList();
+                p.Run();
+                p.ProcessArrayList();
 
-                while ((ln = file.ReadLine()) != null)
-                {
-
-                    Console.WriteLine(ln);
-                    Beowulf.Add(ln);
-                    counter++;
-                }
-                file.Close();
-                Console.WriteLine($"File has {counter} lines. ");
             }
-        }
-        public int FindNumberOfBlankSpace(string line)
-        {
 
-            int countletters = 0;
-            int countSpaces = 0;
-            foreach (char c in line)
+            public void Run()
             {
-                if (char.IsLetter(c))
+                this.ReadTextFiles();
+
+
+            }
+
+
+            public void ReadTextFiles()
+            {
+                //Read file using StreamReader. Reads file line by line
+                using (StreamReader file = new StreamReader("U:/ Users/730108/Beowulf.txt"))
                 {
-                    countletters++;
-                }
-                if (char.IsWhiteSpace(c))
-                {
-                    countSpaces++;
+                    int counter = 0;
+                    string ln;
+
+                    while ((ln = file.ReadLine()) != null)
+                    {
+
+                        Console.WriteLine(ln);
+                        Beowulf.Add(ln);
+                        counter++;
+                    }
+                    file.Close();
+                    Console.WriteLine($"File has {counter} lines. ");
                 }
             }
-            return countSpaces;
-
-        }
-         
-        public void ProcessArrayList()
-        {
-            int LineNumber = 0;
-            foreach (var line in Beowulf)
+            public int FindNumberOfBlankSpace(string line)
             {
 
+                int countletters = 0;
+                int countSpaces = 0;
+                foreach (char c in line)
+                {
+                    if (char.IsLetter(c))
+                    {
+                        countletters++;
+                    }
+                    if (char.IsWhiteSpace(c))
+                    {
+                        countSpaces++;
+                    }
+                }
+                return countSpaces;
 
-                if (ContainsWord(line.ToString().ToLower(), "fare") && !(ContainsWord(line.ToString().ToLower(), "war")))
+            }
+
+            public void ProcessArrayList()
+            {
+                int LineNumber = 0;
+                foreach (var line in Beowulf)
                 {
 
-                    Console.WriteLine("line number is: {0}", LineNumber);
-                    LineNumber++;
-                }
-            }  
-        }
-        public bool ContainsWord(string line, string word)
-        {
-            if (line.Contains(word) == true)
-            {
-                return true;
-            }
-            return false;
-        }
 
+                    if (ContainsWord(line.ToString().ToLower(), "fare") && !(ContainsWord(line.ToString().ToLower(), "war")))
+                    {
+
+                        Console.WriteLine("line number is: {0}", LineNumber);
+                        LineNumber++;
+                    }
+                }
+            }
+            public bool ContainsWord(string line, string word)
+            {
+                if (line.Contains(word) == true)
+                {
+                    return true;
+                }
+                return false;
+            }
+
+
+        }
 
     }
-
-}
