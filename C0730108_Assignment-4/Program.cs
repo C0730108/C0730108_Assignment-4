@@ -83,7 +83,7 @@ namespace C0730108_Assignment_4
                     Console.WriteLine("line number is: {0}", LineNumber);
                     LineNumber++;
                 }
-            }
+            }  
         }
         public bool ContainsWord(string line, string word)
         {
