@@ -69,7 +69,7 @@ namespace C0730108_Assignment_4
             return countSpaces;
 
         }
-
+         
         public void ProcessArrayList()
         {
             int LineNumber = 0;
