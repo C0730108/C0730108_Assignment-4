@@ -23,7 +23,7 @@ namespace C0730108_Assignment_4
         public void ReadTextFiles()
         {
             //Read file using StreamReader.Reads file line by line 
-            using (StreamReader file = new StreamReader("c:/U:Users/730108/ASSIGNMENT/Beowulf.txt"))
+            using (StreamReader file = new StreamReader("U:Users/730108/ASSIGNMENT/Beowulf.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -35,17 +35,21 @@ namespace C0730108_Assignment_4
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
             }
-          
+
         }
         public int FindNumberOfBlankSpaces(string line)
         {
-            //
             int countletters = 0;
             int countSpaces = 0;
 
-            foreach (char.IsLetter(c)) { countletters++; }
-            if (char.IsWhiteSpace(c)) { countSpaces++; }
+            foreach (char c in line)
+            {
+                if (char.IsLetter(c)) { countletters++; }
+                if (char.IsWhiteSpace(c)) { countSpaces++; }
+            }
+            return countSpaces;
+
         }
+
     }
-    
 }
