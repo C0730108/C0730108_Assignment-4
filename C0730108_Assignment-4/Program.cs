@@ -20,41 +20,73 @@ namespace C0730108_Assignment_4
             p.Run();
 
         }
-        public void Run() { this.ReadTextFiles(); }
-
-        public void ReadTextFiles()
+        public void Run()
         {
-            //Read file using StreamReader.Reads file line by line 
-            using (StreamReader file = new StreamReader("U:/Users/730108/Beowulf.txt"))
+            this.ReadTextFiles();
+            this.ProcessArrayList();
+        }
+public void ReadTextFiles()
+        { }
+        public void ProcessArrayList()
+        {
+            int LineNumber = 0;
+        
+        
+        
+            foreach (var line in Beowulf)
             {
-                int counter = 0;
-                string ln;
-                while ((ln = file.ReadLine()) != null)
+                Console.WriteLine();
                 {
-                    Console.WriteLine(ln);
-                    Beowulf.Add(ln);
-                    counter++;
+                    LineNumber++;
+                    if (ContainsWord(line.ToString().ToLower(), "sea") && ContainsWord(line.ToString().ToLower(), "fare"))
+                    {
+                        Console.WriteLine("line number is:{0}", LineNumber);
+
+                    }
                 }
-                file.Close();
-                Console.WriteLine($"File has {counter} lines.");
             }
-
-        }
-        public int FindNumberOfBlankSpaces(string line)
-        {
-            int countletters = 0;
-            int countSpaces = 0;
-
-            foreach (char c in line)
+            public bool ContainsWord(string line, string word)
             {
-                if (char.IsLetter(c))
-                { countletters++; }
-                if (char.IsWhiteSpace(c)) { countSpaces++; }
+                if (line.Contains(word) == true)
+                {
+                    return true;
+                }
+                return false;
             }
-            return countSpaces;
+            public void ReadTextLine();
+            {
+                //Read file using StreamReader.Reads file line by line 
+                using (StreamReader file = new StreamReader("U:/Users/730108/Beowulf.txt"))
+                {
+                    int counter = 0;
+                    string ln;
+                    while ((ln = file.ReadLine()) != null)
+                    {
+                        Console.WriteLine(ln);
+                        Beowulf.Add(ln);
+                        counter++;
+                    }
+                    file.Close();
+                    Console.WriteLine($"File has {counter} lines.");
+                }
+
+            }
+            public int FindNumberOfBlankSpaces(string line)
+            {
+                int countletters = 0;
+                int countSpaces = 0;
+
+                foreach (char c in line)
+                {
+                    if (char.IsLetter(c))
+                    { countletters++; }
+                    if (char.IsWhiteSpace(c)) { countSpaces++; }
+                }
+                return countSpaces;
+
+            }
 
         }
-
     }
 }
 
