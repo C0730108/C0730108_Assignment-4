@@ -18,6 +18,7 @@ namespace C0730108_Assignment_4
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.Run();
+            p.ProcessArrayList();
 
         }
         public void Run()
@@ -41,6 +42,7 @@ public void ReadTextFiles()
                     if (ContainsWord(line.ToString().ToLower(), "sea") && ContainsWord(line.ToString().ToLower(), "fare"))
                     {
                         Console.WriteLine("line number is:{0}", LineNumber);
+                        LineNumber++;
 
                     }
                 }
@@ -60,14 +62,30 @@ public void ReadTextFiles()
                 {
                     int counter = 0;
                     string ln;
+                    StreamReader reader = new StreamReader("U:/Users/730108/Beowulf.txt");
+                    string script = reader.ReadToEnd();
+
                     while ((ln = file.ReadLine()) != null)
+                    {
+                    }
+                        var text = script.Trim();
+                        int count = 0, index = 0;
+
+
+                    while(index< text.Length)
                     {
                         Console.WriteLine(ln);
                         Beowulf.Add(ln);
                         counter++;
+                        while(index < text.Length && !char.IsWhiteSpace(text[index]))
+                        {
+                            index++;
+                            count++;
+                        }
                     }
                     file.Close();
                     Console.WriteLine($"File has {counter} lines.");
+                    Console.WriteLine("Total number of words are:", +count);
                 }
 
             }
